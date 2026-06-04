@@ -14,7 +14,8 @@
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-link {
@@ -22,6 +23,26 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s;
+}
+
+.nav-button {
+  border: 1px solid rgba(255,255,255,0.16);
+  background: transparent;
+  color: white;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-user {
+  color: #fff;
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 .nav-link:hover {

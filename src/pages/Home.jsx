@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { searchMovies, getPopularMovies } from "../services/api";
 import "../css/Home.css"
 
-function Home ({ favorites, onToggleFavorite }) {
+function Home ({ favorites, onToggleFavorite, appError }) {
   const navigate = useNavigate()
 
     const [
@@ -63,8 +63,14 @@ function Home ({ favorites, onToggleFavorite }) {
 
     }
 
-    const handleFavoriteClick = (movie) => {
-      onToggleFavorite(movie)
+    const handleFavoriteClick = async (movie) => {
+      try {
+        await onToggleFavorite(movie)
+        setError(null)
+      } catch (err) {
+        console.error('Unable to toggle favorite', err)
+        setError(err.message || 'Failed to update favorite')
+      }
     }
 
     return (
@@ -80,7 +86,7 @@ function Home ({ favorites, onToggleFavorite }) {
             <button type="submit" className="search-button">Search</button>
         </form>
         
-        {error && <div className="error-message">{error}</div>}
+        {(error || appError) && <div className="error-message">{error || appError}</div>}
 
         {loading ? <div className="loading">Loading...</div> : <div className="movies-grid">
             {movies.map(

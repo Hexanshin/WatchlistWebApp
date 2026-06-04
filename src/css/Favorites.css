@@ -41,18 +41,45 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  flex: 1;
+}
+
+.favorite-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .favorite-info h3 {
   margin: 0;
   font-size: 1rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .favorite-info p {
   color: #aaa;
   margin: 0;
   font-size: 0.95rem;
+}
+
+.favorite-rating {
+  flex-shrink: 0;
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.favorite-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .remove-favorite-btn {
