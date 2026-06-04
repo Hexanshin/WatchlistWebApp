@@ -1,9 +1,11 @@
 import MovieCard from "../components/MovieCard"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { searchMovies, getPopularMovies } from "../services/api";
 import "../css/Home.css"
 
-function Home () {
+function Home ({ favorites, onToggleFavorite }) {
+  const navigate = useNavigate()
 
     const [
         searchQuery, setSearchQuery
@@ -61,6 +63,10 @@ function Home () {
 
     }
 
+    const handleFavoriteClick = (movie) => {
+      onToggleFavorite(movie)
+    }
+
     return (
     <div className="home">
         <form onSubmit={handleSearch} className="search-form">
@@ -79,7 +85,12 @@ function Home () {
         {loading ? <div className="loading">Loading...</div> : <div className="movies-grid">
             {movies.map(
                 (movie) => 
-             (<MovieCard movie = {movie} key = {movie.id}/>))}
+             (<MovieCard
+                movie={movie}
+                key={movie.id}
+                onFavoriteClick={handleFavoriteClick}
+                isFavorite={favorites.some((item) => item.id === movie.id)}
+             />))}
         </div>}
         
     </div>

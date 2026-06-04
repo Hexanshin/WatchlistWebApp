@@ -1,0 +1,31 @@
+.star-rating {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.star {
+  background: transparent;
+  border: none;
+  color: #ffd700;
+  font-size: 1rem;
+  cursor: default;
+  padding: 0;
+}
+
+.star.editable {
+  cursor: pointer;
+  transition: transform 0.06s ease;
+}
+
+.star.editable:active {
+  transform: scale(0.95);
+}
+
+.star.filled {
+  color: #ffd700;
+}
+
+.star:not(.filled) {
+  color: #555;
+}
