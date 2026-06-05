@@ -6,6 +6,11 @@ import "../css/Navbar.css"
 function NavBar() {
   const { user, signInWithGoogle, signOutUser } = useAuth()
 
+  const getDisplayName = () => {
+    if (!user) return ''
+    return user.displayName || user.email?.split('@')[0] || 'User'
+  }
+
     return <nav className="navbar">
         <div className="navbar-brand">
             <Link to = "/" state={{ reset: true }} className="navbar-logo-link">
@@ -19,7 +24,12 @@ function NavBar() {
             <Link to="/favorites" className="nav-link">Favorites</Link>
             {user ? (
               <>
-                <span className="nav-user">{user.displayName || user.email}</span>
+                <Link to="/profile" className="nav-user-link">
+                  <span className="nav-user-avatar">
+                    {user.photoURL ? <img src={user.photoURL} alt="Profile" /> : getDisplayName().charAt(0).toUpperCase()}
+                  </span>
+                  <span className="nav-user-name">{getDisplayName()}</span>
+                </Link>
                 <button className="nav-button" onClick={signOutUser}>Sign out</button>
               </>
             ) : (

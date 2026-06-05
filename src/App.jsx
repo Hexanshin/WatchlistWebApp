@@ -6,6 +6,7 @@ import { db } from './firebase'
 import "./css/App.css"
 import Home from './pages/Home'
 import Favorites from './pages/Favorites'
+import Profile from './pages/Profile'
 import NavBar from './components/NavBar'
 
 function App() {
@@ -102,6 +103,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home favorites={favorites} onToggleFavorite={handleToggleFavorite} appError={error} />} />
             <Route path='/favorites' element={<Favorites favorites={favorites} onToggleFavorite={handleToggleFavorite} onToggleWatched={handleToggleWatched} onSetRating={handleSetRating} appError={error} />} />
+            <Route path='/profile' element={<Profile favorites={favorites} onSetRating={handleSetRating} />} />
           </Routes>
         </main>
       </div>

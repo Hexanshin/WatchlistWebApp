@@ -35,8 +35,16 @@ export function AuthProvider({ children }) {
     await signOut(auth)
   }
 
+  const reloadUser = async () => {
+    if (!firebaseEnabled || !auth.currentUser) {
+      return
+    }
+    await auth.currentUser.reload()
+    setUser(auth.currentUser)
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, signInWithGoogle, signOutUser }}>
+    <AuthContext.Provider value={{ user, loading, signInWithGoogle, signOutUser, reloadUser }}>
       {children}
     </AuthContext.Provider>
   )

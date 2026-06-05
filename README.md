@@ -1,6 +1,9 @@
 # WatchlistWebApp
 
-A React + Firebase movie tracker app that lets users browse trending movies, search by title, favorite films, and view movie details.
+A React + Firebase movie tracker app that lets users browse trending movies, search by title, favorite films, and view movie details. This is my first project using React, i followed a youtube tutorial by Tech with Tim (link below) and built on top of it with the help of Copilot.
+
+Channel Link: https://www.youtube.com/@TechWithTim
+Video Link: https://www.youtube.com/watch?v=G6D9cBaLViA&t=1957s
 
 ## Features
 
@@ -9,6 +12,8 @@ A React + Firebase movie tracker app that lets users browse trending movies, sea
 - Favorite movies with Firestore persistence
 - Movie detail popup with rating and synopsis
 - Google sign-in authentication
+
+If you want to build on top of this just follow the steps below. 
 
 ## Prerequisites
 
@@ -37,7 +42,6 @@ cp .env.example .env
 VITE_FIREBASE_API_KEY=
 VITE_FIREBASE_AUTH_DOMAIN=
 VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_STORAGE_BUCKET=
 VITE_FIREBASE_MESSAGING_SENDER_ID=
 VITE_FIREBASE_APP_ID=
 VITE_TMDB_API_KEY=
@@ -66,6 +70,10 @@ This app uses `VITE_TMDB_API_KEY` to call The Movie Database API from the fronte
 ## Firebase Configuration
 
 Firebase config is read from `.env` using `VITE_FIREBASE_*` variables. The Firebase frontend config is safe for public use, but sensitive access rules should be enforced with Firestore security rules.
+
+### Profile and top 10 movies
+
+The profile page stores photos directly as browser data URLs and does not require Firebase Storage. Your custom top 10 movie list is saved locally in the browser for each signed-in user.
 
 ## Deploy Firestore Rules
 
