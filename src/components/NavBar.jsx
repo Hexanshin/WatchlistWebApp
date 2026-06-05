@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
+import logo from "../assets/MovieTrackerLogo.png"
 import "../css/Navbar.css"
 
 function NavBar() {
@@ -7,11 +8,14 @@ function NavBar() {
 
     return <nav className="navbar">
         <div className="navbar-brand">
-            <Link to = "/">Movie Tracker</Link>
+            <Link to = "/" state={{ reset: true }} className="navbar-logo-link">
+              <img src={logo} alt="Movie Tracker logo" className="navbar-logo" />
+              <span>Movie Tracker</span>
+            </Link>
         </div>
 
         <div className="navbar-links">
-            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/" state={{ reset: true }} className="nav-link">Home</Link>
             <Link to="/favorites" className="nav-link">Favorites</Link>
             {user ? (
               <>

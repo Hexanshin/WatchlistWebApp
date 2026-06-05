@@ -14,17 +14,117 @@
   padding: 1rem;
   border-radius: 12px;
   width: 90%;
-  max-width: 520px;
+  max-width: 680px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .modal-header h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
 }
 
 .modal-body {
   padding-top: 0.5rem;
+}
+
+.movie-detail {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.movie-detail-thumb {
+  width: 160px;
+  min-width: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.movie-detail-info {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-detail-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.movie-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.movie-detail-rating {
+  margin: 0;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.movie-detail-favorite-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.movie-detail-favorite-btn:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.4);
+  transform: scale(1.02);
+}
+
+.movie-detail-favorite-btn.favorited {
+  background: #e50914;
+  border-color: #e50914;
+}
+
+.movie-detail-favorite-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.35);
+}
+
+.movie-detail-favorite-btn.favorited {
+  background: #e50914;
+  border-color: #e50914;
+}
+
+.movie-detail-synopsis {
+  color: #ddd;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .modal-actions {

@@ -1,14 +1,17 @@
 import "../css/MovieCard.css"
 
-function MovieCard({ movie, onFavoriteClick, isFavorite }) {
+function MovieCard({ movie, onFavoriteClick, isFavorite, onCardClick }) {
     return(
-        <div className="movie-card">
+        <div className="movie-card" onClick={() => onCardClick?.(movie)}>
             <div className="movie-poster">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
                 <div className="movie-overlay">
                     <button
                       className={`favorite-btn ${isFavorite ? 'favorited' : ''}`}
-                      onClick={() => onFavoriteClick?.(movie)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onFavoriteClick?.(movie)
+                      }}
                     >
                         {isFavorite ? '♥' : '♡'}
                     </button>
