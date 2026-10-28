@@ -117,15 +117,18 @@ function Profile() {
   }
 
   const handleSelectMovie = (index, movie) => {
-    setTop10Movies((current) => {
-      const next = [...current]
-      next[index] = {
-        id: movie.id,
-        title: movie.title,
-        poster_path: movie.poster_path,
-      }
-      return next
-    })
+    const nextMovies = [...top10Movies]
+    nextMovies[index] = {
+      id: movie.id,
+      title: movie.title,
+      poster_path: movie.poster_path,
+    }
+    setTop10Movies(nextMovies)
+
+    if (user) {
+      localStorage.setItem(`top10Movies_${user.uid}`, JSON.stringify(nextMovies))
+    }
+
     setActiveSlot(null)
     setSearchQuery('')
     setSearchResults([])
@@ -133,11 +136,13 @@ function Profile() {
   }
 
   const handleRemoveMovie = (index) => {
-    setTop10Movies((current) => {
-      const next = [...current]
-      next[index] = null
-      return next
-    })
+    const nextMovies = [...top10Movies]
+    nextMovies[index] = null
+    setTop10Movies(nextMovies)
+
+    if (user) {
+      localStorage.setItem(`top10Movies_${user.uid}`, JSON.stringify(nextMovies))
+    }
   }
 
   const handleSaveProfile = async (event) => {
@@ -289,9 +294,7 @@ function Profile() {
                         e.stopPropagation()
                         handleRemoveMovie(index)
                       }}
-                      aria-label={`Remove movie from rank ${index + 1}`}
                     >
-                      ×
                     </button>
                   </>
                 ) : (
